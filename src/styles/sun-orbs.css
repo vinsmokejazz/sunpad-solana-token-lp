@@ -1,0 +1,39 @@
+/* Sun Gradient Orb - Background Effects */
+.sun-orb-large {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 31.25rem; /* 500px */
+  height: 31.25rem; /* 500px */
+  border-radius: 50%;
+  background: linear-gradient(to bottom right, rgba(249, 115, 22, 0.3), rgba(239, 68, 68, 0.2), rgba(250, 204, 21, 0.1));
+  filter: blur(3rem);
+  pointer-events: none;
+}
+
+.sun-orb-medium {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18.75rem; /* 300px */
+  height: 18.75rem; /* 300px */
+  border-radius: 50%;
+  background: linear-gradient(to bottom right, rgba(251, 146, 60, 0.4), rgba(248, 113, 113, 0.3), rgba(252, 211, 77, 0.2));
+  filter: blur(3rem);
+  pointer-events: none;
+}
+
+.sun-orb-small {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9.375rem; /* 150px */
+  height: 9.375rem; /* 150px */
+  border-radius: 50%;
+  background: linear-gradient(to bottom right, rgba(253, 186, 116, 0.5), rgba(252, 165, 165, 0.4), rgba(239, 68, 68, 0.3));
+  filter: blur(2rem);
+  pointer-events: none;
+}

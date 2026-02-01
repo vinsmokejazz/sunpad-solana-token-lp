@@ -1,0 +1,125 @@
+/* Header with V-Shape Cut Edges */
+.header-nav {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  clip-path: polygon(2% 0, 98% 0, 100% 50%, 98% 100%, 2% 100%, 0 50%);
+}
+
+.header-inner-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(249, 115, 22, 0.1), transparent, rgba(239, 68, 68, 0.1));
+}
+
+.header-top-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(249, 115, 22, 0.5), transparent);
+}
+
+.header-bottom-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(239, 68, 68, 0.5), transparent);
+}
+
+.header-content {
+  max-width: 80rem; /* 1280px */
+  margin: 0 auto;
+  padding-left: 2rem; /* 32px */
+  padding-right: 2rem; /* 32px */
+  position: relative;
+  z-index: 10;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem; /* 80px */
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* 12px */
+}
+
+.header-title {
+  font-size: 1.875rem; /* 30px */
+  font-weight: bold;
+  background: linear-gradient(to right, rgba(249, 115, 22, 1), rgba(239, 68, 68, 1), rgba(250, 204, 21, 1));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.header-wallet-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* 16px */
+}
+
+/* Footer with V-Shape Cut Edges */
+.footer-nav {
+  position: relative;
+  margin-top: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  clip-path: polygon(2% 0, 98% 0, 100% 50%, 98% 100%, 2% 100%, 0 50%);
+}
+
+.footer-top-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(250, 204, 21, 0.5), transparent);
+}
+
+.footer-content {
+  max-width: 80rem; /* 1280px */
+  margin: 0 auto;
+  padding-left: 2rem; /* 32px */
+  padding-right: 2rem; /* 32px */
+  padding-top: 1.5rem; /* 24px */
+  padding-bottom: 1.5rem; /* 24px */
+  position: relative;
+  z-index: 10;
+}
+
+.footer-text {
+  text-align: center;
+  color: rgb(156, 163, 175); /* gray-400 */
+  font-size: 0.875rem; /* 14px */
+}
+
+.footer-github-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  color: rgb(249, 115, 22); /* orange-500 */
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-github-link:hover {
+  color: rgb(239, 68, 68); /* red-500 */
+}
+
+.footer-github-icon {
+  width: 1rem;
+  height: 1rem;
+}

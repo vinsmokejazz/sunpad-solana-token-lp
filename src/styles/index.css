@@ -1,0 +1,4 @@
+/* Import all component styles */
+@import "./galaxy-stars.css";
+@import "./sun-orbs.css";
+@import "./header-footer.css";
