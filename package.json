@@ -11,14 +11,17 @@
   },
   "dependencies": {
     "@solana/spl-token": "^0.4.14",
+    "@solana/spl-token-metadata": "^0.1.6",
     "@solana/wallet-adapter-base": "^0.9.27",
     "@solana/wallet-adapter-react": "^0.15.30",
     "@solana/wallet-adapter-react-ui": "^0.9.30",
     "@solana/wallet-adapter-wallets": "^0.19.30",
     "@solana/web3.js": "^1.98.4",
     "@tailwindcss/vite": "^4.1.18",
+    "pinata": "^2.5.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-hot-toast": "^2.6.0",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
