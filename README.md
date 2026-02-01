@@ -32,7 +32,7 @@ A modern, beautiful token launchpad built on Solana's Token 2022 program. Create
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/vinsmokejazz/sunpad-solana-token-lp.git
+   git clone https://github.com/vinsmokejazz/sunpad.git
    cd sunpad-solana-token-lp
    ```
 
