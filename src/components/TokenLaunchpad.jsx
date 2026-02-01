@@ -14,7 +14,6 @@ import {
 import { pack } from "@solana/spl-token-metadata";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { Keypair, SystemProgram, Transaction } from "@solana/web3.js";
-import { PinataSDK } from "pinata";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -31,26 +30,32 @@ const TokenLaunchpad = () => {
   const { connection } = useConnection();
   const wallet = useWallet();
 
-  const pinata = new PinataSDK({
-    pinataJwt: import.meta.env.VITE_PINATA_JWT,
-    pinataGateway: import.meta.env.VITE_PINATA_GATEWAY_URL,
-  });
-
   // Upload metadata to IPFS - required before creating token
   const createUploadMetadata = async (name, symbol, description, image) => {
-    const metadata = JSON.stringify({
+    const metadata = {
       name,
       symbol,
       description,
       image,
-    });
-
-    const metadataFile = new File([metadata], "metadata.json", {
-      type: "application/json",
-    });
+    };
 
     try {
-      const result = await pinata.upload.file(metadataFile);
+      const response = await fetch('https://api.pinata.cloud/pinning/pinJSONToIPFS', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_PINATA_JWT}`,
+        },
+        body: JSON.stringify(metadata),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Pinata API error:', errorText);
+        throw new Error(`Failed to upload to Pinata: ${response.status} - ${errorText}`);
+      }
+
+      const result = await response.json();
       console.log("Metadata uploaded:", result);
       return result.IpfsHash;
     } catch (error) {
@@ -231,7 +236,7 @@ const TokenLaunchpad = () => {
 
         <div className="p-8 space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+            <label className="text-md font-medium text-gray-300 flex items-center gap-2">
               <span className="text-orange-400">●</span>
               Token Name
             </label>
@@ -246,7 +251,7 @@ const TokenLaunchpad = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+            <label className="text-md font-medium text-gray-300 flex items-center gap-2">
               <span className="text-red-400">●</span>
               Symbol
             </label>
@@ -261,7 +266,7 @@ const TokenLaunchpad = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+            <label className="text-md font-medium text-gray-300 flex items-center gap-2">
               <span className="text-yellow-400">●</span>
               Description
             </label>
@@ -276,7 +281,7 @@ const TokenLaunchpad = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+            <label className="text-md font-medium text-gray-300 flex items-center gap-2">
               <span className="text-orange-400">●</span>
               Image URL
             </label>
@@ -291,7 +296,7 @@ const TokenLaunchpad = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+            <label className="text-md font-medium text-gray-300 flex items-center gap-2">
               <span className="text-red-400">●</span>
               Initial Supply
             </label>
@@ -307,7 +312,7 @@ const TokenLaunchpad = () => {
 
           <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 flex gap-3">
             <span className="text-2xl">💡</span>
-            <div className="text-sm text-gray-300">
+            <div className="text-md text-gray-300">
               <p className="font-semibold text-orange-400 mb-1">Important:</p>
               <p>Your token will be created on Solana Devnet using the Token 2022 program with built-in metadata support.</p>
             </div>
