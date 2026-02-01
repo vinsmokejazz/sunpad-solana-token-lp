@@ -212,47 +212,132 @@ const TokenLaunchpad = () => {
   };
 
   return (
-    <div>
-      <h1>Solana Token LaunchPad</h1>
-      <input
-        name="name"
-        type="text"
-        placeholder="Token name"
-        value={newToken.name}
-        onChange={handleInputChange}
-      />
-      <input
-        name="symbol"
-        type="text"
-        placeholder="Symbol"
-        value={newToken.symbol}
-        onChange={handleInputChange}
-      />
-      <input
-        name="description"
-        type="text"
-        placeholder="Description"
-        value={newToken.description}
-        onChange={handleInputChange}
-      />
-      <input
-        name="image"
-        type="text"
-        placeholder="Image URL"
-        value={newToken.image}
-        onChange={handleInputChange}
-      />
-      <input
-        name="initialSupply"
-        type="number"
-        placeholder="Initial Supply"
-        value={newToken.initialSupply || ""}
-        onChange={handleInputChange}
-      />
+    <div className="max-w-4xl mx-auto">
+      <div className="text-center mb-12">
+        <h2 className="text-5xl md:text-6xl font-bold mb-4 bg-linear-to-r from-orange-400 via-red-500 to-yellow-500 bg-clip-text text-transparent">
+          Launch Your Token
+        </h2>
+        <p className="text-gray-400 text-lg">
+          Create your own Solana SPL token with metadata in minutes
+        </p>
+      </div>
 
-      <button onClick={createToken} disabled={isCreating}>
-        {isCreating ? "Creating..." : "Mint Token"}
-      </button>
+      <div className="bg-linear-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-orange-500/20 overflow-hidden">
+        <div className="bg-linear-to-r from-orange-500/10 to-red-500/10 border-b border-orange-500/20 px-8 py-6">
+          <h3 className="text-2xl font-semibold text-white flex items-center gap-3">
+            Token Configuration
+          </h3>
+        </div>
+
+        <div className="p-8 space-y-6">
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+              <span className="text-orange-400">●</span>
+              Token Name
+            </label>
+            <input
+              name="name"
+              type="text"
+              placeholder="e.g., SunToken"
+              value={newToken.name}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 bg-gray-950/50 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 hover:border-orange-500/50"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+              <span className="text-red-400">●</span>
+              Symbol
+            </label>
+            <input
+              name="symbol"
+              type="text"
+              placeholder="e.g., SUN"
+              value={newToken.symbol}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 bg-gray-950/50 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300 hover:border-red-500/50"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+              <span className="text-yellow-400">●</span>
+              Description
+            </label>
+            <textarea
+              name="description"
+              placeholder="Describe your token..."
+              value={newToken.description}
+              onChange={handleInputChange}
+              rows="3"
+              className="w-full px-4 py-3 bg-gray-950/50 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300 hover:border-yellow-500/50 resize-none"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+              <span className="text-orange-400">●</span>
+              Image URL
+            </label>
+            <input
+              name="image"
+              type="text"
+              placeholder="https://example.com/token-image.png"
+              value={newToken.image}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 bg-gray-950/50 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 hover:border-orange-500/50"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+              <span className="text-red-400">●</span>
+              Initial Supply
+            </label>
+            <input
+              name="initialSupply"
+              type="number"
+              placeholder="1000000"
+              value={newToken.initialSupply || ""}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 bg-gray-950/50 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300 hover:border-red-500/50"
+            />
+          </div>
+
+          <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 flex gap-3">
+            <span className="text-2xl">💡</span>
+            <div className="text-sm text-gray-300">
+              <p className="font-semibold text-orange-400 mb-1">Important:</p>
+              <p>Your token will be created on Solana Devnet using the Token 2022 program with built-in metadata support.</p>
+            </div>
+          </div>
+
+          <button
+            onClick={createToken}
+            disabled={isCreating}
+            className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${
+              isCreating
+                ? "bg-gray-700 cursor-not-allowed text-gray-400"
+                : "bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 hover:from-orange-600 hover:via-red-600 hover:to-yellow-600 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50"
+            }`}
+          >
+            {isCreating ? (
+              <span className="flex items-center justify-center gap-3">
+                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                </svg>
+                Creating Your Token...
+              </span>
+            ) : (
+              <span className="flex items-center justify-center gap-2">
+                Mint Token
+              </span>
+            )}
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
